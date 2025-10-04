@@ -52,41 +52,15 @@ public class Perpustakaan {
         }
     }
 
-    // Tukar bab berdasarkan posisi (1-based)
-    public void tukarBab(AtributBuku buku, int pos1, int pos2) {
-        if (buku == null || buku.babHead == null || buku.babHead.next == null) return;
-        if (pos1 == pos2) return;
-
-        TambahBab node1 = null;
-        TambahBab node2 = null;
-        TambahBab temp = buku.babHead;
-        int idx = 1;
-        while (temp != null) {
-            if (idx == pos1) node1 = temp;
-            if (idx == pos2) node2 = temp;
-            temp = temp.next;
-            idx++;
-        }
-
-        if (node1 == null || node2 == null) {
-            System.out.println("Posisi bab tidak valid: " + pos1 + ", " + pos2);
-            return;
-        }
-
-        String swap = node1.namaBab;
-        node1.namaBab = node2.namaBab;
-        node2.namaBab = swap;
-    }
-
-    // Backward-compatible: tukar bab pertama & terakhir
+    // Tukar bab pertama & terakhir
     public void tukarBab(AtributBuku buku) {
-        if (buku == null || buku.babHead == null || buku.babHead.next == null) return;
-        // hitung jumlah bab
-        int count = 0;
-        TambahBab t = buku.babHead;
-        while (t != null) { count++; t = t.next; }
-        if (count < 2) return;
-        tukarBab(buku, 1, count);
+        if (buku.babHead == null || buku.babHead.next == null) return;
+        TambahBab first = buku.babHead;
+        TambahBab last = buku.babHead;
+        while (last.next != null) last = last.next;
+        String temp = first.namaBab;
+        first.namaBab = last.namaBab;
+        last.namaBab = temp;
     }
 
     public void cetak() {

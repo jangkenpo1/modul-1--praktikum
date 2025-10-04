@@ -48,8 +48,7 @@ public class Main {
     System.out.println("\n\n");
     System.out.println("Bab \"Bab 1: Awal Cerita\" ditukar dengan \"Bab 3: Persahabatan\"");
     System.out.println("=== Setelah Swap ===");
-    // tukar bab posisi 1 dan 3 pada buku Laskar Pelangi
-    perpus.tukarBab(laskar, 1, 3);
+    perpus.tukarBab(laskar);
     perpus.cetak();
 
     }
